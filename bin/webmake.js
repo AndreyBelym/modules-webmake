@@ -11,7 +11,7 @@ const count       = require("es5-ext/object/count")
 
 const { isArray } = Array, { now } = Date;
 
-const optimist = require("optimist").usage("Usage: $0 [options] [<input>] [<output>]", {
+const yargs = require("yargs").usage("Usage: $0 [options] [<input>] [<output>]", {
 	"name": { string: true, description: "Expose program in your namespace with given name" },
 	"amd": { boolean: true, description: "Expose bundle as AMD module" },
 	"cjs": { boolean: true, description: "Expose bundle as CJS module" },
@@ -27,12 +27,12 @@ const optimist = require("optimist").usage("Usage: $0 [options] [<input>] [<outp
 	"sourcemap": { boolean: true, description: "Include source maps" }
 });
 
-const { argv } = optimist, options = {};
+const { argv } = yargs, options = {};
 
 let [input] = argv._;
 
 if (argv.help) {
-	process.stdout.write(`${ optimist.help() }\n`);
+	process.stdout.write(`${ yargs.help() }\n`);
 	process.exit(0);
 }
 
